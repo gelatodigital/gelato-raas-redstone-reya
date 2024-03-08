@@ -2,7 +2,7 @@
 import hre from "hardhat";
 import * as sdk from "@redstone-finance/sdk";
 import { WrapperBuilder } from "@redstone-finance/evm-connector";
-import { RedstonePriceFeedWithRoundsBTC} from "../typechain";
+import { RedstonePriceFeedWithRoundsETH} from "../typechain";
 
 const parsePrice = (value: Uint8Array) => {
   const bigNumberPrice = hre.ethers.BigNumber.from(value);
@@ -16,13 +16,12 @@ async function main() {
   const [signer] = await hre.ethers.getSigners();
 
  // GET CONTRACT
-  let oracle: RedstonePriceFeedWithRoundsBTC;
- let oracleAddress = (await hre.deployments.get("RedstonePriceFeedWithRoundsBTC"))
-    .address;
+  let oracle: RedstonePriceFeedWithRoundsETH;
+ let oracleAddress = (await hre.deployments.get("RedstonePriceFeedWithRoundsETH")).address;
   oracle = (await hre.ethers.getContractAt(
-    "RedstonePriceFeedWithRoundsBTC",
+    "RedstonePriceFeedWithRoundsETH",
     oracleAddress
-  )) as RedstonePriceFeedWithRoundsBTC;
+  )) as RedstonePriceFeedWithRoundsETH;
 
 
 
@@ -31,7 +30,7 @@ async function main() {
 const getLatestSignedPrice = await sdk.requestDataPackages({
   dataServiceId: "redstone-primary-prod",
   uniqueSignersCount: 3,
-  dataFeeds: ["BTC"],
+  dataFeeds: ["ETH"],
   urls: ["https://oracle-gateway-1.a.redstone.finance"],
 });
 
@@ -39,7 +38,7 @@ const getLatestSignedPrice = await sdk.requestDataPackages({
 const wrappedOracle =
   WrapperBuilder.wrap(oracle).usingDataService(getLatestSignedPrice);
 
-const { dataPackage } = getLatestSignedPrice["BTC"]![0];
+const { dataPackage } = getLatestSignedPrice["ETH"]![0];
 
 const parsedPrice = parsePrice(dataPackage.dataPoints[0].value);
 console.log(`Setting price in PriceFeed contract to: ${parsedPrice}`);
