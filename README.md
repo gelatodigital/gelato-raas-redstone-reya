@@ -33,12 +33,12 @@ If you choose Relay as update method, you will need to input your `GELATO_API_KE
 
 3. Test the  web3 function
 ```
-npx w3f test web3-functions/redstone-relay/index.ts --logs --chain-id=YOUR CHAIN ID
+npx w3f test web3-functions/redstone-interval/index.ts --logs --chain-id=YOUR CHAIN ID
 ```
 
 4. Deploy the web3 function on IPFS
 ```
-npx w3f deploy web3-functions/redstone-relay/index.ts
+npx w3f deploy web3-functions/redstone-interval/index.ts
 ```
  ✓ Web3Function deployed to ipfs.
  ✓ CID: QmQYPZ6VGanbg1PoMmswYGTsQz3CXeBLvbXoXAfcFkFUYz
