@@ -17,7 +17,7 @@ async function main() {
 
  // GET CONTRACT
   let oracle: RedstonePriceFeedWithRoundsETH;
- let oracleAddress = (await hre.deployments.get("RedstonePriceFeedWithRoundsETH")).address;
+ let oracleAddress = "0xFb49001366fC0b23B4892909426bd3796958b6D4" //(await hre.deployments.get("RedstonePriceFeedWithRoundsETH")).address;
   oracle = (await hre.ethers.getContractAt(
     "RedstonePriceFeedWithRoundsETH",
     oracleAddress

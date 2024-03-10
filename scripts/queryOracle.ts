@@ -17,26 +17,25 @@ async function main() {
 
  // GET CONTRACT
   let oracle: RedstonePriceFeedWithRoundsBTC;
- let oracleAddress = (await hre.deployments.get("RedstonePriceFeedWithRoundsETH"))
-    .address;
+ let oracleAddress = "0xFb49001366fC0b23B4892909426bd3796958b6D4"// (await hre.deployments.get("RedstonePriceFeedWithRoundsETH")).address;
   oracle = (await hre.ethers.getContractAt(
     "RedstonePriceFeedWithRoundsETH",
     oracleAddress
   )) as RedstonePriceFeedWithRoundsBTC;
 
 
-let latestRound = await oracle.latestRound()
-console.log(latestRound)
+// let latestRound = await oracle.latestRound()
+// console.log(latestRound)
    
 
-let latestRoundData = await oracle.latestRoundData()
-console.log(latestRoundData)
+// let latestRoundData = await oracle.latestRoundData()
+// console.log(latestRoundData)
 
 
-let latestAnswer = await oracle.latestAnswer()
-console.log(latestAnswer)
+// let latestAnswer = await oracle.latestAnswer()
+// console.log(latestAnswer)
 
-let roundData = await oracle.getRoundData(1)
+let roundData = await oracle.getRoundData(75)
 console.log(roundData)
 
 }

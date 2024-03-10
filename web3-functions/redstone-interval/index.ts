@@ -52,7 +52,7 @@ Web3Function.onRun(async (context: Web3FunctionContext) => {
   // Retrieve stored & live prices
 
   const { dataPackage } = getLatestSignedPrice[priceFeed]![0];
-
+ 
   const parsedPrice = parsePrice(dataPackage.dataPoints[0].value);
 
   // Craft transaction to update the price on-chain
