@@ -10,6 +10,12 @@ contract RedstonePriceFeedWithRoundsETH is MergedPriceFeedAdapterWithRounds {
   error UpdaterNotAuthorised(address signer);
 
 
+  // By default, we have 3 seconds between the updates, but in the REya Use Case
+  // We need to set it to 0 to avoid conflicts between users
+  function getMinIntervalBetweenUpdates() public view virtual override returns (uint256) {
+    return 0;
+  }
+
   function getDataFeedId() public pure  override returns (bytes32) {
     return ETH_ID;
   }
