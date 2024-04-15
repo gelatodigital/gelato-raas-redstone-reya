@@ -24,7 +24,7 @@ const config: HardhatUserConfig = {
   w3f: {
     rootDir: "./web3-functions",
     debug: false,
-    networks: ["hardhat", "reyaCronos","unreal"], //(multiChainProvider) injects provider for these networks
+    networks: ["hardhat", "liskSepolia"], //(multiChainProvider) injects provider for these networks
   },
   // hardhat-deploy
   namedAccounts: {
@@ -32,12 +32,12 @@ const config: HardhatUserConfig = {
       default: 0,
     },
   },
-  defaultNetwork: "reyaCronos",
+  defaultNetwork: "hardhat",
 
   networks: {
     hardhat: {
       forking: {
-        url:  `https://rpc.sepolia-api.lisk.com`,//'https://rpc.reya-cronos.gelato.digital', //
+        url:  `https://rpc.sepolia-api.lisk.com`,
       },
     },
 
