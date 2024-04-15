@@ -9,6 +9,7 @@ Web3Function.onRun(async (context: Web3FunctionContext) => {
   const { userArgs, multiChainProvider, secrets, storage } = context;
 
   const provider = multiChainProvider.default();
+
   const counter = "0x00172f67db60E5fA346e599cdE675f0ca213b47b"; 
   const abi = ["function increment()"];
       // Generate the target payload
