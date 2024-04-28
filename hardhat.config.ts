@@ -32,12 +32,12 @@ const config: HardhatUserConfig = {
       default: 0,
     },
   },
-  defaultNetwork: "hardhat",
+  defaultNetwork: "sepolia",
 
   networks: {
     hardhat: {
       forking: {
-        url:  `https://rpc.sepolia-api.lisk.com`,
+        url:  `https://rpc.reya-cronos.gelato.digital`,
       },
     },
 
@@ -45,6 +45,11 @@ const config: HardhatUserConfig = {
       accounts: PK ? [PK] : [],
       chainId: 1,
       url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_ID}`,
+    },
+    sepolia: {
+      chainId: 11155111,
+      url: `https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_ID}`,
+      accounts: PK ? [PK] : [],
     },
     mumbai: {
       accounts: PK ? [PK] : [],
@@ -90,7 +95,7 @@ const config: HardhatUserConfig = {
 
   typechain: {
     outDir: "typechain",
-    target: "ethers-v5",
+    target: "ethers-v6",
   },
 
   // hardhat-deploy

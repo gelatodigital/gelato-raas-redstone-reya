@@ -1,5 +1,5 @@
 {
-  "name": "lens-ai-poc",
+  "name": "gelato-redstone-reya",
   "version": "0.0.1",
   "description": "Smart Oracle that pushes prices online every hour or when the price difference with the last price is greater or equal than 2%",
   "scripts": {
@@ -20,13 +20,19 @@
     "w3f-interval:deploy": "npx w3f deploy web3-functions/redstone-interval/index.ts",
     "w3f-relay:deploy": "npx w3f deploy web3-functions/redstone-relay/index.ts",
     "w3f-relay-interval:deploy": "npx w3f deploy web3-functions/redstone-relay-interval/index.ts",
-    "w3f:test": "npx w3f test web3-functions/redstone-interval/index.ts --logs --chain-id=4202"
+    "w3f:test": "npx w3f test web3-functions/redstone-interval/index.ts --logs --chain-id=4202",
+    "w3f-multiple:test": "npx w3f test web3-functions/redstone-interval-multiple/index.ts --logs --chain-id=89346161",
+    "w3f-multiple:deploy": "npx w3f deploy web3-functions/redstone-interval-multiple/index.ts",
+    "create-task:propose": "npx hardhat run ./scripts/create-task/propose-create.ts",
+    "create-task:confirm": "npx hardhat run ./scripts/create-task/confirm-create.ts",
+    "create-task:execute": "npx hardhat run ./scripts/create-task/execute-create.ts",
+    "cancel-task:propose": "npx hardhat run ./scripts/cancel-task/propose-cancel.ts",
+    "cancel-task:confirm": "npx hardhat run ./scripts/cancel-task/confirm-cancel.ts",
+    "cancel-task:execute": "npx hardhat run ./scripts/cancel-task/execute-cancel.ts"
   },
   "license": "ISC",
   "devDependencies": {
     "@ethersproject/providers": "5.7.2",
-      "@gelatonetwork/automate-sdk": "^2.7.0-beta",
-      "@gelatonetwork/web3-functions-sdk": "2.1.7",
     "@nomicfoundation/hardhat-chai-matchers": "1.0.6",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
     "@nomiclabs/hardhat-ethers": "2.2.3",
@@ -65,10 +71,24 @@
     "*.*{ts,js}": "eslint -c .eslintrc.json"
   },
   "dependencies": {
+    "@gelatonetwork/automate-sdk": "3.0.11",
     "@gelatonetwork/relay-sdk": "^5.5.5",
+    "@gelatonetwork/web3-functions-sdk": "2.4.1",
     "@nomiclabs/hardhat-etherscan": "^3.1.8",
     "@openzeppelin/contracts": "^4.9.0",
     "@redstone-finance/evm-connector": "^0.3.6",
-    "@redstone-finance/sdk": "^0.3.6"
+    "@redstone-finance/sdk": "^0.3.6",
+    "@safe-global/api-kit": "1.3.1",
+    "@safe-global/protocol-kit": "1.3.0",
+    "@safe-global/safe-core-sdk-types": "2.3.0",
+    "@safe-global/safe-deployments": "https://github.com/safe-global/safe-deployments"
+  },
+  "overrides": {
+    "@safe-global/protocol-kit": {
+      "@safe-global/safe-deployments": "$@safe-global/safe-deployments"
+    },
+    "@safe-global/api-kit": {
+      "@safe-global/safe-deployments": "$@safe-global/safe-deployments"
+    }
   }
 }

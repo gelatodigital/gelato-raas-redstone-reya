@@ -1,5 +1,5 @@
 
-# Reya RedStone deployments
+# Reya RedStone deploymentsb ETH, BTC, wBTC, USDC, USDT, DAI
 
 ### Relevant Files:
 [ETH Price Feed Adapter contract](./contracts/adapters/RedstonePriceFeedWithRoundsETH.sol)

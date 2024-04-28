@@ -9,10 +9,18 @@ const func: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
     );
   }
 
+  const priceFeeds = ["ETH", "BTC", "WBTC", "USDC", "USDT", "DAI" ]
+
+ 
+
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  const adapterETH= await deploy("RedstonePriceFeedWithRoundsETH", {
+ 
+  for (const priceFeed of priceFeeds) {
+
+  let arifact = `RedstonePriceFeedWithRounds${priceFeed}`  
+  const adapterETH= await deploy(arifact, {
     from: deployer,
     log: hre.network.name !== "hardhat",
     proxy: {
@@ -20,10 +28,13 @@ const func: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
     },
   });
   console.log(
-    `Deployed Price Feed ETH to ${adapterETH.address}`
+    `Deployed Price Feed ${priceFeed} to ${adapterETH.address}`
   );
 
 
+  }
+
+  
 };
 
 export default func;

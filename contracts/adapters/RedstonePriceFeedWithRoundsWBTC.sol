@@ -3,9 +3,9 @@ pragma solidity ^0.8.23;
 
 import  "../RedStoneBaseContracts/redstone-oracles-monorepo/packages/on-chain-relayer/contracts/price-feeds/with-rounds/MergedPriceFeedAdapterWithRounds.sol";
 
-contract RedstonePriceFeedWithRoundsETH is MergedPriceFeedAdapterWithRounds {
+contract RedstonePriceFeedWithRoundsWBTC is MergedPriceFeedAdapterWithRounds {
 
-  bytes32 constant private ETH_ID = bytes32("ETH");
+  bytes32 constant private WBTC_ID = bytes32("WBTC");
 
   error UpdaterNotAuthorised(address signer);
 
@@ -17,7 +17,7 @@ contract RedstonePriceFeedWithRoundsETH is MergedPriceFeedAdapterWithRounds {
   }
 
   function getDataFeedId() public pure  override returns (bytes32) {
-    return ETH_ID;
+    return WBTC_ID;
   }
 
 
