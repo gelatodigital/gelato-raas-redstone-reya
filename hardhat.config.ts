@@ -32,7 +32,7 @@ const config: HardhatUserConfig = {
       default: 0,
     },
   },
-  defaultNetwork: "sepolia",
+  defaultNetwork: "reya",
 
   networks: {
     hardhat: {
@@ -66,10 +66,10 @@ const config: HardhatUserConfig = {
       chainId: 42069,
       url: "https://rpc.op-testnet.gelato.digital",
     },
-    liskSepolia: {
+    reya: {
       accounts: PK ? [PK] : [],
-      chainId: 4202,
-      url: `https://rpc.sepolia-api.lisk.com`,
+      chainId: 1729,
+      url: `https://rpc.reya.network`,
     },
     reyaCronos: {
       accounts: PK ? [PK] : [],

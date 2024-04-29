@@ -44,7 +44,7 @@ async function main() {
 
   const txServiceUrl = 'https://safe-transaction-sepolia.safe.global'
   const service = new SafeApiKit({ txServiceUrl, ethAdapter: ethAdapter })
-
+ 
  
     // Propose transaction to the service 
   const safeTransaction = await service.getTransaction("0x064d939d0f073d041328c02faa8404ac5ef3a196b2301307d21c5595c444fd29")

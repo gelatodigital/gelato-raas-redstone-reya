@@ -71,6 +71,8 @@ async function main() {
     senderSignature: signature.data
   })
 
+
+
   console.log('Proposed a transaction with Safe:', safeAddress)
   console.log('- safeTxHash:', safeTxHash)
   console.log('- Sender:', senderAddress)

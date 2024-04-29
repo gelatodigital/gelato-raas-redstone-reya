@@ -15,6 +15,7 @@ dotenv.config({ path: ".env" });
 import SafeApiKit from "@safe-global/api-kit";
 import { AutomateSDK, TriggerType } from "@gelatonetwork/automate-sdk";
 import { safeAddress } from "../safe";
+import { Signer } from "ethers";
 
 const { ethers } = hre;
 
@@ -27,11 +28,13 @@ async function main() {
     signerOrProvider: deployer,
   });
 
+ 
 
   const protocolKit = await Safe.create({
     ethAdapter,
     safeAddress,
   });
+
 
   const predictedSafeAddress =
     await protocolKit.getAddress();
@@ -46,13 +49,14 @@ async function main() {
   const service = new SafeApiKit({ txServiceUrl, ethAdapter: ethAdapter })
 
  
+ 
     // Propose transaction to the service 
   const safeTransaction = await service.getTransaction("0x7fc30ed3d4fdee33b8426275c0d5a421ccbe51d1c35e4ef397c002321cabccc1")
   const executeTxResponse = await protocolKit.executeTransaction(safeTransaction)
   const receipt = await executeTxResponse.transactionResponse?.wait()
 
   console.log('Confirmed a transaction with Safe:', safeAddress)
-  console.log('- txHash: ', receipt.transactionHash)
+  console.log('- txHash: ', receipt!.transactionHash)
 
 
 }
