@@ -46,7 +46,7 @@ async function main() {
   const chainId = (await ethers.provider.getNetwork()).chainId;
 
   const automate = new AutomateSDK(chainId, deployer);
-  const cid="QmbtQ4ZTHUemg6oqCwkjqYc4MrHQvK7ACEbc1xPXNU1A9B"
+   const cid="QmP6HbRph827Q3B4Ju7GSgmrAKqXzoWr6cT9NZ7HM7XCsW"
   
   const { taskId, tx } = await automate.prepareBatchExecTask({
     name: "Web3Function - Reya Multiple",
