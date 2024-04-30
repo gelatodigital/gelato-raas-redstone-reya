@@ -46,10 +46,22 @@ async function main() {
   const chainId = (await ethers.provider.getNetwork()).chainId;
 
   const automate = new AutomateSDK(chainId, deployer);
- 
-  const {tx,taskId} = await automate.prepareCancelTask("0x5f7b966639c0473e2ef421e98d702c4876a87807f2ea4b4b2207bd12375b1121")
-
-  const txServiceUrl =  'https://transaction.safe.reya.network'
+  const cid="QmbtQ4ZTHUemg6oqCwkjqYc4MrHQvK7ACEbc1xPXNU1A9B"
+  
+  const { taskId, tx } = await automate.prepareBatchExecTask({
+    name: "Web3Function - Reya Multiple",
+    web3FunctionHash: cid,
+    web3FunctionArgs: { 
+      "priceFeeds":["ETH", "BTC", "WBTC", "USDC", "USDT", "DAI" ],
+      "priceFeedAdapterAddresses":["0xa7fca6F37eCA129409af5d9d88e015De51C4aff3","0xc7021763f59F1E3081a36589b701e6928F119961","0xB50CA437B949e9496C4674B20F1D5dd597c59027", "0xCe05AcdD57f1f2e8666386ea7Ed20504a63D0700","0x260aADC4E51D4ECA2f3Aa998AffC1f9becC110b8","0xc2E00Dea3cc483e057519D1df9d313EF2a52C1Ae"]
+      
+    },
+    trigger: {
+      interval: 10 * 1000,
+      type: TriggerType.TIME,
+    },
+  });
+  const txServiceUrl = 'https://transaction.safe.reya.network'
   const service = new SafeApiKit({ txServiceUrl, ethAdapter: ethAdapter })
 
   const safeTransactionData: MetaTransactionData = {

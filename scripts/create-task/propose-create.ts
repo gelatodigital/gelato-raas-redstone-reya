@@ -20,7 +20,7 @@ const { ethers } = hre;
 
 async function main() {
 
-  const [deployer] = await ethers.getSigners(); 
+  const [deployer,safe1] = await ethers.getSigners(); 
 
   const ethAdapter = new EthersAdapter({
     ethers,
@@ -43,23 +43,37 @@ async function main() {
 
 
   const chainId = (await ethers.provider.getNetwork()).chainId;
-
+  console.log(chainId)
   const automate = new AutomateSDK(chainId, deployer);
-  const cid="QmZ3qp2KR43NTzvqcLYzEDajspP2rUzJq9FuFvD3LLDR99"
+  const cid="QmP6HbRph827Q3B4Ju7GSgmrAKqXzoWr6cT9NZ7HM7XCsW"
   
   const { taskId, tx } = await automate.prepareBatchExecTask({
     name: "Web3Function - Reya Multiple",
     web3FunctionHash: cid,
     web3FunctionArgs: { 
-      "priceFeeds":["ETH", "BTC", "WBTC", "USDC", "USDT", "DAI" ],
-      "priceFeedAdapterAddresses":["0xFb49001366fC0b23B4892909426bd3796958b6D4","0x34e8C1929Abb778358202Ea061eaE6f8a88dcA6A","0x1Db3251c664De5990A31518fecA26189d39E0191", "0xBf356E1d7D083E9439A50D38430713BeE7F05a4c","0xB3315A412c0DD59Ff4F040106FC1dE43e9528947","0x201a385ce2a2fcDFd190DaB925B3AB1F9E11ab60"]
-      },
+      // "priceFeeds":["ETH", "BTC", "WBTC", "USDC", "USDT", "DAI" ],
+      // "priceFeedAdapterAddresses":["0xa7fca6F37eCA129409af5d9d88e015De51C4aff3","0xc7021763f59F1E3081a36589b701e6928F119961","0xB50CA437B949e9496C4674B20F1D5dd597c59027", "0xCe05AcdD57f1f2e8666386ea7Ed20504a63D0700","0x260aADC4E51D4ECA2f3Aa998AffC1f9becC110b8","0xc2E00Dea3cc483e057519D1df9d313EF2a52C1Ae"]
+       "priceFeed":"BTC",
+      "priceFeedAdapterAddress":"0xc7021763f59F1E3081a36589b701e6928F119961"
+    },
     trigger: {
       interval: 10 * 1000,
       type: TriggerType.TIME,
     },
   },{},safeAddress);
-  const txServiceUrl = 'https://safe-transaction-sepolia.safe.global'
+
+
+  // let tx2 = await deployer.sendTransaction({
+  //   data:tx.data,
+  //   to:tx.to,
+  // })
+
+  // await tx2.wait()
+
+  // console.log(taskId);
+  // throw("a")
+
+  const txServiceUrl = 'https://transaction.safe.reya.network'
   const service = new SafeApiKit({ txServiceUrl, ethAdapter: ethAdapter })
 
   const safeTransactionData: MetaTransactionData = {

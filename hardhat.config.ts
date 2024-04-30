@@ -14,6 +14,7 @@ import * as dotenv from "dotenv";
 dotenv.config({ path: __dirname + "/.env" });
 
 const PK = process.env.PK;
+const PK2 = process.env.PK2;
 const ALCHEMY_ID = process.env.ALCHEMY_ID;
 // const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 
@@ -67,7 +68,7 @@ const config: HardhatUserConfig = {
       url: "https://rpc.op-testnet.gelato.digital",
     },
     reya: {
-      accounts: PK ? [PK] : [],
+      accounts: PK ? [PK,PK2] : [],
       chainId: 1729,
       url: `https://rpc.reya.network`,
     },
