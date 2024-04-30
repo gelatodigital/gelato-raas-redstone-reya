@@ -20,7 +20,7 @@ const { ethers } = hre;
 
 async function main() {
 
-  const [deployer,safe1] = await ethers.getSigners(); 
+  const [deployer] = await ethers.getSigners(); 
 
   const ethAdapter = new EthersAdapter({
     ethers,
