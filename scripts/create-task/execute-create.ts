@@ -51,7 +51,7 @@ async function main() {
  
  
     // Propose transaction to the service 
-  const safeTransaction = await service.getTransaction("0x0bd8b96d196eab276c1e7c245a96439bfe79421ed2ccd42208b50d21a437e33d")
+  const safeTransaction = await service.getTransaction("0x417767567e39a86ad772a3e21f21253706a3b09ba30db406fc9f060deb6499b6")
   const executeTxResponse = await protocolKit.executeTransaction(safeTransaction)
   const receipt = await executeTxResponse.transactionResponse?.wait()
 

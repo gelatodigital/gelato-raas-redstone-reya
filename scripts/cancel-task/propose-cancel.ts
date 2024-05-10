@@ -46,7 +46,7 @@ async function main() {
 
   const automate = new AutomateSDK(chainId, deployer);
 
-  const {tx,taskId} = await automate.prepareCancelTask("0xfae768985aeeb445bd64c569cfc559f4975276ac4bb8ce4763f38495a856c462")
+  const {tx,taskId} = await automate.prepareCancelTask("0x0b9e0691ceb2e0dc9cd6fabc1f7f40bafde123ea845de751a9cc00fd1e4ec951")
 
   const txServiceUrl =  'https://transaction.safe.reya.network'
   const service = new SafeApiKit({ txServiceUrl, ethAdapter: ethAdapter })

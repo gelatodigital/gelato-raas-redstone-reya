@@ -67,12 +67,13 @@ Web3Function.onRun(async (context: Web3FunctionContext) => {
 
     const { dataPackage } = getLatestSignedPrice[priceFeed]![0];
 
-    const parsedPrice = parsePrice(dataPackage.dataPoints[0].value);
-
+    //const parsedPrice = parsePrice(dataPackage.dataPoints[0].value);
+    console.log(priceFeedAdapterAddress)
     // Craft transaction to update the price on-chain
-    console.log(
-      `Setting ${priceFeed} price in PriceFeed contract to: ${parsedPrice}`
-    );
+    // console.log(
+    //   `Setting ${priceFeed} price in PriceFeed contract to: ${parsedPrice}`
+    // );
+
     const { data } =
       await wrappedOracle.populateTransaction.updateDataFeedsValues(
         dataPackage.timestampMilliseconds

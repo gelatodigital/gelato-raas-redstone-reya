@@ -47,7 +47,7 @@ describe("ClassicModelETH", function () {
     priceFeedAdapter = (await ethers.getContractAt(
       "RedstonePriceFeedWithRoundsETH",
       priceFeedAdapterAddress
-    )) as RedstonePriceFeedWithRoundsETH;
+    )) as unknown as RedstonePriceFeedWithRoundsETH;
 
    
   

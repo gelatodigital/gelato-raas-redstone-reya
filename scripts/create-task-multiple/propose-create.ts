@@ -45,7 +45,7 @@ async function main() {
   const chainId = (await ethers.provider.getNetwork()).chainId;
   console.log(chainId)
   const automate = new AutomateSDK(chainId, deployer);
-  const cid="QmbtQ4ZTHUemg6oqCwkjqYc4MrHQvK7ACEbc1xPXNU1A9B"
+  const cid="QmQKnBmGNMNXRh3srFC4EpM8g9pDofbV5GdJTCvNDzonrP"
   
   const { taskId, tx } = await automate.prepareBatchExecTask({
     name: "Web3Function - Reya Multiple",
@@ -59,8 +59,7 @@ async function main() {
       type: TriggerType.TIME,
     },
   },{},safeAddress);
-  console.log(tx.data)
-  console.log(tx.to)
+
 
   // let tx2 = await deployer.sendTransaction({
   //   data:tx.data,
@@ -69,8 +68,8 @@ async function main() {
 
   // await tx2.wait()
 
-  console.log(taskId);
-  throw("a")
+  // console.log(taskId);
+  // throw("a")
 
   const txServiceUrl = 'https://transaction.safe.reya.network'
   const service = new SafeApiKit({ txServiceUrl, ethAdapter: ethAdapter })
