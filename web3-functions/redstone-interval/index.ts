@@ -54,7 +54,7 @@ Web3Function.onRun(async (context: Web3FunctionContext) => {
   const { dataPackage } = latestSignedPrice[priceFeed]![0];
 
   const lastTimestampPackage = await storage.get("lastTimestampPackage") ?? "0"
-  console.log(lastTimestampPackage)
+
   if (lastTimestampPackage ==   dataPackage.timestampMilliseconds.toString()) {
     return {canExec:false, message:"dataPackage not updated!"}
   } else {
