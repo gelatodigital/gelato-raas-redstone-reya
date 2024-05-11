@@ -46,6 +46,8 @@ Web3Function.onRun(async (context: Web3FunctionContext) => {
     urls: ["https://oracle-gateway-1.a.redstone.finance"],
   });
 
+
+
   // Wrap contract with redstone data service
   const wrappedOracle =
     WrapperBuilder.wrap(priceFeedAdapter).usingDataService(
@@ -67,7 +69,7 @@ Web3Function.onRun(async (context: Web3FunctionContext) => {
 
   const { dataPackage } = getLatestSignedPrice[priceFeed]![0];
 
-
+  
   const parsedPrice = parsePrice(dataPackage.dataPoints[0].value);
   let livePrice = parsedPrice * 10 ** decimals;
 

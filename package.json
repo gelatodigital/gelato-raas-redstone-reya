@@ -21,7 +21,7 @@
     "w3f-interval-multiple:deploy": "npx w3f deploy web3-functions/redstone-interval-multiple/index.ts",
     "w3f-relay:deploy": "npx w3f deploy web3-functions/redstone-relay/index.ts",
     "w3f-relay-interval:deploy": "npx w3f deploy web3-functions/redstone-relay-interval/index.ts",
-    "w3f:test": "npx w3f test web3-functions/redstone-interval/index.ts --logs --chain-id=1729",
+    "w3f:test": "npx w3f test web3-functions/redstone-interval/index.ts --logs --debug --chain-id=1729",
     "w3f-multiple:test": "npx w3f test web3-functions/redstone-interval-multiple/index.ts --logs --chain-id=1729",
     "w3f-multiple:deploy": "npx w3f deploy web3-functions/redstone-interval-multiple/index.ts",
     "create-task:propose": "npx hardhat run ./scripts/create-task/propose-create.ts",
