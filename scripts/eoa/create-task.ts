@@ -26,15 +26,15 @@ async function main() {
   const chainId = (await ethers.provider.getNetwork()).chainId;
   console.log(chainId)
   const automate = new AutomateSDK(chainId, deployer);
-  const cid="QmYHSJ4oyV9WuyUtwSkYNaC3kDHUejyvWfKujCGqnWE3rr"
+  const cid="Qmb5S4B5fJJ2J7kbxPdXsaQ3NbPcQTrP1doyioYKPqaxy8"
   
 
   const { taskId, tx } = await automate.createBatchExecTask({
-    name: "Web3Function - Reya ETH",
+    name: "Web3Function - Reya BTC",
     web3FunctionHash: cid,
     web3FunctionArgs: { 
-     "priceFeed":"ETH",
-    "priceFeedAdapterAddress":"0xFBA40360559a1bcCC608d9cA07deDE8588460874"
+     "priceFeed":"BTC",
+    "priceFeedAdapterAddress":"0xd03Dc3047a8FA1Bca82A8cCda7b389B851A87861"
     },
     trigger: {
       interval: 10 * 1000,
