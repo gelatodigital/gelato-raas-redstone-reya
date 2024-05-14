@@ -30,7 +30,9 @@
     "cancel-task:propose": "npx hardhat run ./scripts/cancel-task/propose-cancel.ts",
     "cancel-task:confirm": "npx hardhat run ./scripts/cancel-task/confirm-cancel.ts",
     "cancel-task:execute": "npx hardhat run ./scripts/cancel-task/execute-cancel.ts",
-    "create-task": "npx hardhat run ./scripts/create.ts"
+    "create-task": "npx hardhat run ./scripts/create.ts",
+    "create-task:eoa": "npx hardhat run ./scripts/eoa/create-task.ts",
+    "cancel-task:eoa": "npx hardhat run ./scripts/eoa/cancel-task.ts"
   },
   "license": "ISC",
   "devDependencies": {
