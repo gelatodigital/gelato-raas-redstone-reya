@@ -28,8 +28,7 @@ async function main() {
   const automate = new AutomateSDK(chainId, deployer);
   const cid="QmYHSJ4oyV9WuyUtwSkYNaC3kDHUejyvWfKujCGqnWE3rr"
   
- let nowArg = new Date().getTime()
-    console.log(nowArg)
+
   const { taskId, tx } = await automate.createBatchExecTask({
     name: "Web3Function - Reya ETH",
     web3FunctionHash: cid,
