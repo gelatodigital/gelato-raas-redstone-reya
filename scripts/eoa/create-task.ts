@@ -28,13 +28,14 @@ async function main() {
   const automate = new AutomateSDK(chainId, deployer);
   const cid="QmYHSJ4oyV9WuyUtwSkYNaC3kDHUejyvWfKujCGqnWE3rr"
   
-
+ let nowArg = new Date().getTime()
+    console.log(nowArg)
   const { taskId, tx } = await automate.createBatchExecTask({
-    name: "Web3Function - Reya USDC",
+    name: "Web3Function - Reya ETH",
     web3FunctionHash: cid,
     web3FunctionArgs: { 
-     "priceFeed":"USDC",
-    "priceFeedAdapterAddress":"0x31A43dB62eC5c07885A89d78551243FE8D2D44D5"
+     "priceFeed":"ETH",
+    "priceFeedAdapterAddress":"0xFBA40360559a1bcCC608d9cA07deDE8588460874"
     },
     trigger: {
       interval: 10 * 1000,
@@ -42,7 +43,8 @@ async function main() {
     },
   });
 
-  console.log(taskId);
+  console.log(taskId)
+
  
 
 
